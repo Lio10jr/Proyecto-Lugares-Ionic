@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lugares"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{lugar?.nombre}}</ion-title>
+    <ion-buttons *ngIf="isAdmin()" [collapse]="true" slot="end">
+      <ion-button (click)="actualizarLugar()"><ion-icon name="create-outline"></ion-icon></ion-button>
+      <ion-button (click)="eliminarLugar()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img class="img-lugar" [src]="lugar?.url_imagen"> </ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center"><b>{{lugar?.nombre}}</b></h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="comentarios">
+    <h3 class="ion-text-center">Comentarios</h3>
+
+    <form [formGroup]="comentarioForm" (ngSubmit)="agregarComentario()">
+      <br />
+      <ion-item>
+        <ion-textarea formControlName="comentario" label="Agregar Comentario" labelPlacement="floating" placeholder="Ingresa tu comentario...">
+        </ion-textarea>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button fill="solid" expand="block" type="submit" [disabled]="!comentarioForm.valid">
+          <ion-icon slot="start" name="send" aria-hidden="true"></ion-icon>
+          Enviar
+        </ion-button>
+      </ion-item>
+    </form>
+
+    <div *ngFor="let comentario of comentarios">
+      <ion-item [button]="true" detail="false">
+        <ion-label>
+          <ion-text>{{comentario.usuario_nombre}}</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">{{comentario.comentario}}</ion-note>
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

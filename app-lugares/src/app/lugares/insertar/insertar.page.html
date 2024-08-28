@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lugares"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Lugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="lugarForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">URL de la Imagen</ion-label>
+      <ion-input formControlName="url_imagen" type="text"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="lugarForm.invalid">Guardar</ion-button>
+  </form>
+</ion-content>

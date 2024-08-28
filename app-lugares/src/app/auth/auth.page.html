@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Login Page -->
+  <div class="container">
+    <h1 class="heading">👋 Bienvenido<br><br></h1>
+    <p class="para">Inicia sesión para continuar!</p>
+    <form [formGroup]="formData">
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Email</legend> 
+          <ion-input formControlName="email" type="email" placeholder="name@domain.com"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Contraseña</legend> 
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <p class="signup-text">Aun no tienes cuenta? &nbsp;<a routerLink="registro">Sign Up!</a></p>
+      <ion-button class="login-button" (click)="login()" expand="block">Login</ion-button>
+    </form>
+  </div>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lugares"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{lugar?.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="lugarForm" (ngSubmit)="onSubmit()">
+        <h4 class="ion-text-center"><b>Actualizar</b></h4>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="lugarForm.get('nombre')?.invalid && (lugarForm.get('nombre')?.dirty || lugarForm.get('nombre')?.touched)">
+          <ion-note color="danger">El nombre es requerido.</ion-note>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="floating">URL de Imagen</ion-label>
+          <ion-input formControlName="url_image" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="lugarForm.get('url_image')?.invalid && (lugarForm.get('url_image')?.dirty || lugarForm.get('url_image')?.touched)">
+          <ion-note color="danger">La URL de la imagen es requerida y debe ser válida.</ion-note>
+        </ion-item>
+    
+        <ion-button expand="full" type="submit" [disabled]="!lugarForm.valid">Modificar Lugar</ion-button>
+      </form>
+    </ion-col>
+
+  </ion-row>
+</ion-content>

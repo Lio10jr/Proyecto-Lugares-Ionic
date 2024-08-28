@@ -1,0 +1,7 @@
+{
+  "name": "app-lugares",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
