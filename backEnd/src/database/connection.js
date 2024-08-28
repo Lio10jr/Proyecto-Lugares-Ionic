@@ -1,9 +1,10 @@
+
 const connectionData = {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'lugares-db',
-    password: '567',
-    port: 5432,
+    user: process.env.DB_USER ,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 }
 
 module.exports = connectionData;
